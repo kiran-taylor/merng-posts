@@ -2,9 +2,10 @@ const User = require("../../models/User");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
+
 const { UserInputError } = require("apollo-server");
 
-const { SECTRET_KEY } = require("../../config");
+const { SECRET_KEY } = require("../../config");
 
 const {
   validateRegisterInput,
@@ -18,7 +19,7 @@ function generateToken(user) {
       email: user.email,
       username: user.username,
     },
-    SECTRET_KEY,
+    SECRET_KEY,
     { expiresIn: "1h" }
   );
 }
